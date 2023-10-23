@@ -14,10 +14,10 @@
 </head>
 
 <body>
-  <header class="header" id="home">
+  <header class="header">
     <nav class="navbar container">
       <ul class="nav-list-left">
-        <li class="nav-item"><a href="#home">Home</a></li>
+        <li class="nav-item"><a href="#home" class="active">Home</a></li>
       </ul>
       <ul class="nav-list-right">
         <li class="nav-item"><a href="#about">About</a></li>
@@ -46,7 +46,7 @@
   </header>
 
   <main>
-    <section class="intro container inner-container">
+    <section id="home" class="intro container inner-container">
       <div class="left">
         <h1>Hi, I am <span class="bold-text">Pankaj.</span>
           <h3><span class="bold-text">Enthusiastic</span> Coder</h3>
@@ -220,9 +220,10 @@
       </div>
     </section>
     <section id="contact">
-      <h2 class="bold-text section-heading">Connect with me</h2>
-      <div class="container">
-        <div class="contact inner-container">
+      <div class="container inner-container">
+        <h2 class="bold-text section-heading">Connect with me</h2>
+
+        <div class="contact">
           <form action="" class="contact-form">
             <div class="form-grid">
               <input type="text" size="1" autocomplete="on" name="name" class="input-elem" placeholder="Your Name">

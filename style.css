@@ -1,14 +1,23 @@
 :root {
-	--clr-primary: #607d8b;
+	--clr-primary: rgb(96, 125, 139);
 	--clr-secondary: #e6e6e6;
 	--clr-text-secondary: #ffffff;
 	--clr-text-primary: #686868;
 	--clr-overlay: rgba(96, 125, 139, 0.7);
-	/* --clr-nav-text: #000; */
+	--clr-nav-text: #000;
 
 	--header-height: 6rem;
 	--fw-normal: 300;
 	--fw-bold: 400;
+}
+
+body::-webkit-scrollbar {
+	width: 1rem;
+	background-color: var(--clr-secondary);
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: var(--clr-primary);
 }
 
 *,
@@ -109,16 +118,20 @@ body {
 	border-top-color: var(--clr-nav-text);
 	width: 0%;
 	height: 100%;
-	transform-origin: 50%;
 	position: absolute;
 	top: 0;
 	left: 50%;
-	transition: ease-in 200ms;
+	transition: cubic-bezier(0.34, 1.23, 0.78, 0.7) 200ms;
 	transform: translateX(-50%);
 }
 
 .navbar li:hover a::before {
 	width: 80%;
+}
+
+.navbar a.active::before {
+	width: 80%;
+	font-weight: var(--fw-bold);
 }
 
 .header.scroll {
@@ -379,6 +392,7 @@ body {
 .contact {
 	background-color: var(--clr-primary);
 	border-radius: 0.5rem;
+	padding: 5rem;
 }
 
 .contact-form {
@@ -408,9 +422,10 @@ textarea.input-elem {
 }
 
 .input-elem {
-	padding: 1.5rem 1rem;
+	padding: 1.4rem 1rem;
 	border-radius: 0.5rem;
 	border: none;
+	color: var(--clr-text-primary);
 }
 
 input,
