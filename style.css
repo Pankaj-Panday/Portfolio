@@ -1,5 +1,6 @@
 :root {
 	--clr-primary: rgb(96, 125, 139);
+	--clr-primary-dark: rgb(72, 94, 105);
 	--clr-secondary: #e6e6e6;
 	--clr-text-secondary: #ffffff;
 	--clr-text-primary: #686868;
@@ -142,10 +143,6 @@ body {
 	color: var(--clr-text-secondary);
 }
 
-/* .header.scroll .navbar a::before {
-	border-bottom-color: 
-} */
-
 .nav-list-right {
 	display: flex;
 	justify-content: space-between;
@@ -172,6 +169,18 @@ body {
 	height: 100%;
 }
 
+.social-icon img {
+	filter: invert(49%) sepia(22%) saturate(420%) hue-rotate(155deg)
+		brightness(91%) contrast(92%);
+	transition: ease-in 200ms;
+}
+
+.social-icon img:hover,
+.social-icon a:active img {
+	filter: invert(35%) sepia(21%) saturate(486%) hue-rotate(155deg)
+		brightness(93%) contrast(90%);
+}
+
 .inner-container {
 	padding: 10rem 10rem;
 }
@@ -180,12 +189,25 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	height: calc(100vh - var(--header-height));
+	max-height: 90rem;
 }
 
 .profile-picture {
 	position: relative;
 	width: 90%;
 	margin-left: auto;
+}
+
+.intro h1 {
+	font-size: 4.8rem;
+	font-weight: var(--fw-normal);
+}
+
+@keyframes move {
+	100% {
+		transform: translateY(0px);
+	}
 }
 
 .profile-picture img {
@@ -200,22 +222,54 @@ body {
 	left: -10%;
 }
 
-.intro h1 {
-	font-size: 4.8rem;
-	font-weight: var(--fw-normal);
-}
-
-.intro h3 {
+.intro h3,
+.intro .typed-text {
 	font-size: 2.4rem;
 	font-weight: var(--fw-normal);
 	color: var(--clr-text-primary);
+	width: max-content;
 }
 
-.intro button {
+.intro .typed-text {
+	font-weight: var(--fw-bold);
+	text-transform: lowercase;
+}
+
+.intro .cursor {
+	background-color: var(--clr-text-primary);
+	width: 0.25rem;
+	display: inline-block;
+	margin-left: 0.1rem;
+	opacity: 0;
+	animation: blink 0.6s linear infinite;
+}
+
+.intro .cursor.editing {
+	animation: none;
+	opacity: 1;
+}
+
+.intro .btn {
 	background-color: var(--clr-primary);
 	border: none;
 	color: var(--clr-text-secondary);
 	cursor: pointer;
+	transition: ease-in 200ms;
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.intro .btn:hover,
+.intro .btn:active {
+	outline: none;
+	background-color: var(--clr-primary-dark);
 }
 
 .intro .left {
