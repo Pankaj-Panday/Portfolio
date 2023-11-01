@@ -1,53 +1,15 @@
 // Get current Year and display at bottom of page
 document.getElementById("date").textContent = new Date().getFullYear();
-const space = document.querySelector("header.header").offsetHeight + 100;
+const space = document.querySelector("header.header").offsetHeight;
 const navLinks = document.querySelectorAll(".navbar a");
-let scrollY = window.pageYOffset;
 
-function changeNavColor(scrollY) {
-	const header = this.document.querySelector(".header");
-	if (scrollY > 0) {
-		header.classList.add("scroll");
-		document.documentElement.style.setProperty("--clr-nav-text", "#fff");
-	} else {
-		header.classList.remove("scroll");
-		document.documentElement.style.setProperty("--clr-nav-text", "#000");
-	}
-}
-
-function navChangeOnScroll() {
-	scrollY = window.pageYOffset;
-
-	changeNavColor(scrollY);
-
-	const sections = document.querySelectorAll("main section");
-	sections.forEach((section) => {
-		const sectionDistanceFromTop = section.offsetTop;
-		const sectionHeight = section.offsetHeight;
-		const id = section.getAttribute("id");
-		if (scrollY >= sectionDistanceFromTop - sectionHeight / 3) {
-			navLinks.forEach((link) => {
-				link.classList.remove("active");
-			});
-			document
-				.querySelector(`.navbar a[href="#${id}"]`)
-				.classList.add("active");
-		}
-	});
-}
-function makeLinkActive(activeLink) {
-	navLinks.forEach((link) => {
-		link.classList.remove("active");
-	});
-	activeLink.classList.add("active");
-}
 async function typeIntro() {
 	const typedText = document.querySelector(".intro .typed-text");
 	const cursor = document.querySelector(".intro .cursor");
 	const words = [
 		"an enthusiastic coder",
 		"a web developer",
-		"also available for hiring",
+		"available for hiring",
 	];
 	let word = "";
 	let wordDelay = 800; // in millisecond
@@ -93,17 +55,101 @@ async function typeIntro() {
 	}
 }
 
-// Change the navbar background color and navlinks color on scroll
-window.addEventListener("scroll", navChangeOnScroll);
-
 // Add "active" class to nav link when clicked
+function makeLinkActive(activeLink) {
+	document.querySelector(".active").classList.remove("active");
+	activeLink.classList.add("active");
+}
 navLinks.forEach((navLink) => {
 	navLink.addEventListener("click", function (event) {
 		makeLinkActive(event.target);
 	});
 });
+
+const introSection = document.querySelector(".intro");
+const header = this.document.querySelector(".header");
+const introSectionObserver = new IntersectionObserver(
+	function (entries) {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				header.classList.remove("scroll");
+				document.documentElement.style.setProperty("--clr-nav-text", "#000");
+			} else {
+				header.classList.add("scroll");
+				document.documentElement.style.setProperty("--clr-nav-text", "#fff");
+			}
+		});
+	},
+	{
+		threshold: 0.95,
+	}
+);
+
+const fadeObserver = new IntersectionObserver(
+	function (entries) {
+		entries.forEach((entry) => {
+			if (!entry.isIntersecting) {
+				entry.target.classList.remove("appear");
+				return;
+			}
+			entry.target.classList.add("appear");
+			// fadeObserver.unobserve(entry.target);
+		});
+	},
+	{ threshold: [0.3, 0.6, 0.9, 1], rootMargin: "200px 0px 0px 0px" }
+);
+
+const faders = document.querySelectorAll(".fade");
+
+faders.forEach((fader) => {
+	fadeObserver.observe(fader);
+});
+
+const slideObserver = new IntersectionObserver(
+	function (entries) {
+		entries.forEach((entry) => {
+			if (!entry.isIntersecting) {
+				// entry.target.classList.remove("appear");
+				return;
+			} else {
+				entry.target.classList.add("appear");
+				slideObserver.unobserve(entry.target);
+			}
+		});
+	},
+	{
+		threshold: 0,
+		rootMargin: "0px 0px -100px 0px",
+	}
+);
+
+const sliders = document.querySelectorAll(".slide-in");
+
+function toggleExpand() {
+	const expandBtns = document.querySelectorAll(".project .expand-btn");
+
+	expandBtns.forEach((btn) => {
+		let isExpanded = false;
+		btn.addEventListener("click", function () {
+			if (!isExpanded) {
+				this.textContent = "-";
+				isExpanded = true;
+			} else {
+				this.textContent = "+";
+				isExpanded = false;
+			}
+			let cardDetails = btn.parentNode.nextElementSibling;
+			cardDetails.classList.toggle("show");
+		});
+	});
+}
+
 // typing effect on intro text
 window.addEventListener("DOMContentLoaded", () => {
 	typeIntro();
-	changeNavColor(scrollY);
+	toggleExpand();
+	introSectionObserver.observe(introSection);
+	sliders.forEach((slider) => {
+		slideObserver.observe(slider);
+	});
 });
