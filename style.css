@@ -650,10 +650,6 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
-	:root {
-		--header-height: 4.5rem;
-	}
-
 	.inner-container {
 		padding: 4.5rem 0rem;
 	}
