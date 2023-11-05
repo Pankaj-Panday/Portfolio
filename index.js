@@ -67,7 +67,8 @@ navLinks.forEach((navLink) => {
 });
 
 const introSection = document.querySelector(".intro");
-const header = this.document.querySelector(".header");
+const header = document.querySelector(".header");
+const navbar = document.querySelector(".navbar");
 const introSectionObserver = new IntersectionObserver(
 	function (entries) {
 		entries.forEach((entry) => {
@@ -101,10 +102,6 @@ const fadeObserver = new IntersectionObserver(
 
 const faders = document.querySelectorAll(".fade");
 
-faders.forEach((fader) => {
-	fadeObserver.observe(fader);
-});
-
 const slideObserver = new IntersectionObserver(
 	function (entries) {
 		entries.forEach((entry) => {
@@ -125,7 +122,7 @@ const slideObserver = new IntersectionObserver(
 
 const sliders = document.querySelectorAll(".slide-in");
 
-function toggleExpand() {
+function toggleCardExpand() {
 	const expandBtns = document.querySelectorAll(".project .expand-btn");
 
 	expandBtns.forEach((btn) => {
@@ -144,12 +141,32 @@ function toggleExpand() {
 	});
 }
 
-// typing effect on intro text
+function handleNavbarClick() {
+	const menu = document.querySelector(".hamburger-menu");
+	const navbar = document.querySelector(".navbar");
+	menu.addEventListener("click", function () {
+		navbar.classList.toggle("show");
+	});
+}
+
+function handleHamburgerMenu() {
+	const menu = document.querySelector(".hamburger-menu");
+	menu.addEventListener("click", function () {
+		this.classList.toggle("clicked");
+	});
+	// remove clicked class if menu is open and user clicks on body
+}
+
 window.addEventListener("DOMContentLoaded", () => {
 	typeIntro();
-	toggleExpand();
+	toggleCardExpand();
+	handleNavbarClick();
+	handleHamburgerMenu();
 	introSectionObserver.observe(introSection);
 	sliders.forEach((slider) => {
 		slideObserver.observe(slider);
+	});
+	faders.forEach((fader) => {
+		fadeObserver.observe(fader);
 	});
 });
