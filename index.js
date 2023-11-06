@@ -145,23 +145,15 @@ function handleNavbarClick() {
 	const menu = document.querySelector(".hamburger-menu");
 	const navbar = document.querySelector(".navbar");
 	menu.addEventListener("click", function () {
+		this.classList.toggle("open");
 		navbar.classList.toggle("show");
 	});
-}
-
-function handleHamburgerMenu() {
-	const menu = document.querySelector(".hamburger-menu");
-	menu.addEventListener("click", function () {
-		this.classList.toggle("clicked");
-	});
-	// remove clicked class if menu is open and user clicks on body
 }
 
 window.addEventListener("DOMContentLoaded", () => {
 	typeIntro();
 	toggleCardExpand();
 	handleNavbarClick();
-	handleHamburgerMenu();
 	introSectionObserver.observe(introSection);
 	sliders.forEach((slider) => {
 		slideObserver.observe(slider);

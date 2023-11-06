@@ -754,13 +754,13 @@ footer {
 	.hamburger-menu .second {
 		margin: 3px 0;
 	}
-	.hamburger-menu.clicked .first {
+	.hamburger-menu.open .first {
 		transform: translateY(6px) rotate(45deg);
 	}
-	.hamburger-menu.clicked .second {
+	.hamburger-menu.open .second {
 		transform: scale(0);
 	}
-	.hamburger-menu.clicked .third {
+	.hamburger-menu.open .third {
 		transform: translateY(-6px) rotate(-45deg);
 	}
 	.social-links {
