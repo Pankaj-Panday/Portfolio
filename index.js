@@ -144,9 +144,17 @@ function toggleCardExpand() {
 function handleNavbarClick() {
 	const menu = document.querySelector(".hamburger-menu");
 	const navbar = document.querySelector(".navbar");
+	const header = document.querySelector(".header");
 	menu.addEventListener("click", function () {
-		this.classList.toggle("open");
+		menu.classList.toggle("open");
 		navbar.classList.toggle("show");
+	});
+	// close the navbar when user clicks outside of it
+	document.addEventListener("click", function (event) {
+		if (!header.contains(event.target) && navbar.classList.contains("show")) {
+			menu.classList.toggle("open");
+			navbar.classList.remove("show");
+		}
 	});
 }
 
