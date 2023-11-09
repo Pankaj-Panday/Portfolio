@@ -1,6 +1,8 @@
 :root {
-	--clr-primary: rgb(96, 125, 139);
-	--clr-primary-dark: rgb(72, 94, 105);
+	/* --clr-primary: rgb(96, 125, 139); */
+	--clr-primary: rgb(84, 84, 237);
+	/* --clr-primary-dark: rgb(72, 94, 105); */
+	--clr-primary-dark: rgb(64, 64, 176);
 	--clr-secondary: #e6e6e6;
 	--clr-text-secondary: #ffffff;
 	--clr-text-primary: #686868;
@@ -206,15 +208,15 @@ body {
 }
 
 .social-icon img {
-	filter: invert(49%) sepia(22%) saturate(420%) hue-rotate(155deg)
-		brightness(91%) contrast(92%);
+	filter: invert(53%) sepia(95%) saturate(6368%) hue-rotate(234deg)
+		brightness(95%) contrast(96%);
 	transition: ease-in 200ms;
 }
 
 .social-icon img:hover,
 .social-icon a:active img {
-	filter: invert(35%) sepia(21%) saturate(486%) hue-rotate(155deg)
-		brightness(93%) contrast(90%);
+	filter: invert(18%) sepia(100%) saturate(3434%) hue-rotate(240deg)
+		brightness(74%) contrast(80%);
 }
 
 .intro {
