@@ -594,6 +594,7 @@ body {
 .project-img img {
 	-o-object-fit: cover;
 	object-fit: cover;
+	aspect-ratio: 16 / 9;
 	vertical-align: middle;
 }
 
@@ -616,8 +617,8 @@ body {
 }
 
 .project .expand-btn {
-	width: 30px;
-	height: 30px;
+	min-width: 30px;
+	min-height: 30px;
 	background-color: var(--clr-primary);
 	border: none;
 	border-radius: 50%;
