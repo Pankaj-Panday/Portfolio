@@ -97,7 +97,7 @@ const fadeObserver = new IntersectionObserver(
 			// fadeObserver.unobserve(entry.target);
 		});
 	},
-	{ threshold: [0.3, 0.6, 0.9, 1], rootMargin: "200px 0px 0px 0px" }
+	{ threshold: 0.3, rootMargin: "200px 0px 0px 0px" }
 );
 
 const faders = document.querySelectorAll(".fade");
@@ -116,7 +116,7 @@ const slideObserver = new IntersectionObserver(
 	},
 	{
 		threshold: 0,
-		rootMargin: "0px 0px -100px 0px",
+		rootMargin: "0px 0px -300px 0px",
 	}
 );
 
