@@ -102,26 +102,6 @@ const fadeObserver = new IntersectionObserver(
 
 const faders = document.querySelectorAll(".fade");
 
-const slideObserver = new IntersectionObserver(
-	function (entries) {
-		entries.forEach((entry) => {
-			if (!entry.isIntersecting) {
-				// entry.target.classList.remove("appear");
-				return;
-			} else {
-				entry.target.classList.add("appear");
-				slideObserver.unobserve(entry.target);
-			}
-		});
-	},
-	{
-		threshold: 0,
-		rootMargin: "0px 0px -300px 0px",
-	}
-);
-
-const sliders = document.querySelectorAll(".slide-in");
-
 function toggleCardExpand() {
 	const expandBtns = document.querySelectorAll(".project .expand-btn");
 
@@ -163,9 +143,6 @@ window.addEventListener("DOMContentLoaded", () => {
 	toggleCardExpand();
 	handleNavbarClick();
 	introSectionObserver.observe(introSection);
-	sliders.forEach((slider) => {
-		slideObserver.observe(slider);
-	});
 	faders.forEach((fader) => {
 		fadeObserver.observe(fader);
 	});

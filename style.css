@@ -86,14 +86,7 @@ img {
 	pointer-events: none;
 }
 
-.slide-in {
-	-webkit-transform: translateY(100%);
-	-ms-transform: translateY(100%);
-	transform: translateY(100%);
-}
-
-.fade,
-.slide-in {
+.fade {
 	-webkit-transition: opacity 500ms ease-in, -webkit-transform 250ms ease-in;
 	transition: opacity 500ms ease-in, -webkit-transform 250ms ease-in;
 	-o-transition: opacity 500ms ease-in, transform 250ms ease-in;
@@ -106,11 +99,6 @@ img {
 	opacity: 1;
 	/* visibility: visible; */
 	pointer-events: all;
-}
-.slide-in.appear {
-	-webkit-transform: translateY(0);
-	-ms-transform: translateY(0);
-	transform: translateY(0);
 }
 
 .btn {
